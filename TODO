@@ -1,0 +1,12 @@
+=== V2 ===
+- ensure anything other than {token}.meteor.com doesn't get assigned a short name
+  - e.g. foo.com.meteor.com should go to madewith.meteor.com/foo.com.meteor.com, *not*
+    madewith.meteor.com/foo.com
+- make css base64 much smaller, or get nick to add files
+- Allow editing/removing listed app
+- can't upvote twice from same ip
+- What happens with the badge if the app isn't listed?
+- Make apps based on unique name key
+- BUG: When adding a new app and there are many apps with 0 votes
+  it doesn't scroll to the right position
+- BUG: weird selection artifact when clicking on upvote

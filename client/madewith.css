@@ -1,0 +1,249 @@
+html {
+  height: 100%;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-image: url('/bg-tile.png');
+  background-position: center;
+}
+
+.rocketship {
+  background-image: url('/rocketship.png');
+  repeat: none;
+  width: 300px;
+  height: 635px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.container {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+}
+
+.inner_container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 100%;
+  position: relative;
+}
+
+.app_list {
+  width: 100%;
+  padding-right: 10px;
+}
+
+.app_list_inner {
+  margin: 10px 10px 10px 10px;
+}
+
+.app {
+  padding: 20px;
+  margin-top: 20px;
+  background: white;
+  cursor: pointer;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.app_selected .app_description span {
+  background: #ff0;
+}
+
+.upvote {
+  color: grey;
+  cursor: pointer;
+}
+
+.app_description {
+  font-size: 2em;
+}
+
+textarea.app_description {
+  width: 100%;
+  padding: 0;
+  height: 3em;
+  margin-bottom: 10px;
+}
+
+.draft_field {
+  margin-bottom: 10px;
+}
+
+.draft_field label {
+  font-size: 100%;
+  font-weight: bold;
+  padding: 1px;
+  line-height: 28px;
+}
+
+.draft_app_input {
+  position: absolute;
+  left: 220px;
+  width: 535px;
+  font-size: 100%;
+  padding: 1px;
+}
+
+.draft_buttons {
+  float: right;
+}
+
+.draft_buttons button {
+  font-size: 100%;
+}
+
+.draft_app_submit {
+  width: 200px;
+  background: #dd3;
+}
+
+.draft_app_cancel {
+  width: 200px;
+}
+
+.add_app {
+  font-size: 1.5em;
+  width: 8em;
+  letter-spacing: -1px;
+  margin-left: auto;
+  display: block;
+
+  text-shadow: -1px -2px 0 rgba(0, 0, 0, 0.25);
+/*
+  background-color: #414141;
+  background-image: -webkit-linear-gradient(top, #555, #222);
+  background-image: -o-linear-gradient(top, #555, #222);
+  background-image: linear-gradient(top, #555, #222);
+  background-repeat: repeat-x;*/
+
+background-color: #39f;
+background-image: -moz-linear-gradient(top, #39F, #17c);
+background-image: -ms-linear-gradient(top, #39F, #17c);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#39F), to(#17c));
+background-image: -webkit-linear-gradient(top, #39F, #17c);
+background-image: -o-linear-gradient(top, #39F, #17c);
+background-image: linear-gradient(top, #39F, #17c);
+
+border-color: #05C #05C #36a #05C;
+
+//  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  color: white;
+}
+
+.app_details {
+  font-size: 90%;
+  margin-top: 7px;
+}
+
+.comments_expanded_arrow {
+  font-size: 0.7em;
+  vertical-align: middle;
+}
+
+.header {
+  background: url(/small-rocketship.gif) no-repeat 500px center;
+  border-bottom: 5px solid white;
+  margin-bottom: 10px;
+}
+
+.header_madewith {
+  font-size: 3.5em;
+  float: left;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -2px;
+  text-shadow: 1px 1px #014783;
+}
+
+.action_bar {
+  float: right;
+  padding-top: 25px;
+}
+
+.sort_toggle {
+  padding: 4px 8px;
+  cursor: pointer;
+  background-color: white;
+}
+
+.sort_toggle_left {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.sort_toggle_right {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.sort_toggle_selected {
+  background-color: #acf;
+  font-weight: bold;
+}
+
+#new_comment_comment {
+  display: block;
+  width: 590px;
+  height: 100px;
+}
+
+.install_badge_instructions {
+  border: 2px solid green;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #cfc;
+}
+
+
+.comment, .new_comment {
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px 0;
+  overflow: hidden;
+  position: relative;
+  zoom: 1;
+}
+
+.comment_author, #new_comment_author {
+  float: left;
+  width: 100px;
+  font-weight: bold;
+  font-size: 100%;
+}
+
+#new_comment_author {
+  position: relative;
+}
+
+.comment_text {
+  margin-left: 120px;
+  font-size: 100%;
+}
+
+#new_comment_comment {
+  float: right;
+  font-size: 100%;
+}
+
+.new_comment_submit {
+  font-size: 100%;
+  margin-top: 5px;
+  float: right;
+  clear: both;
+}
+
+.vote_count {
+  font-weight: bold;
+}

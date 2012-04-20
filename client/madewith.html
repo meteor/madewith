@@ -1,0 +1,131 @@
+<head>
+  <title>Made with Meteor!</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="inner_container">
+      {{> app_list}}
+    </div>
+  </div>
+  <div class="rocketship"></div>
+</body>
+
+<template name="app_list">
+  <div class="app_list">
+    <div class="app_list_inner">
+      {{> header}}
+      {{> add_or_draft_app}}
+      {{#each apps}}
+      {{> app}}
+      {{/each}}
+    </div>
+  </div>
+</template>
+
+<template name="header">
+  <div class="header">
+    <div class="header_madewith">Made with Meteor</div>
+    {{> action_bar}}
+    <br style="clear: both;">
+  </div>
+</template>
+
+<template name="add_or_draft_app">
+  {{#if draft}}
+    {{> draft_app}}
+  {{else}}
+  <button class="add_app">
+    Add your app
+  </button>
+  {{/if}}
+</template>
+
+<template name="draft_app">
+  <div class="app">
+    <textarea id="draft_description"
+              class="app_description"
+              placeholder="Give a brief description of your app" />
+    <div class="draft_field">
+      <label for="draft_name">App Name/Domain:</label>
+      <input id="draft_name" class="draft_app_input" placeholder="myapp.meteor.com" />
+    </div>
+
+    <div class="draft_field">
+      <label for="draft_github_url">GitHub URL (optional):</label>
+      <input id="draft_github_url" class="draft_app_input" placeholder="github.com/meteor/meteor" />
+    </div>
+
+    <div class="draft_field">
+      <label for="draft_password">Password (for editing):</label>
+      <input type="password" id="draft_password" placeholder="password" class="draft_app_input" />
+    </div>
+
+    <div class="draft_buttons">
+      <button class="draft_app_cancel">cancel</button>
+      <button class="draft_app_submit">submit</button>
+    </div>
+  </div>
+</template>
+
+<template name="app">
+  <div class="app {{app_additional_class}}" id="app_{{normalized_name}}">
+    {{> install_badge_instructions}}
+    <div class="app_description">
+      <span>{{description}}</span>
+    </div>
+    <div class="app_details">
+      <span class="upvote">▲</span>
+      <span class="vote_count">{{vote_count}} votes</span>
+      ::
+      <a href="http://{{app_domain}}" target="_blank" class="right">{{app_domain}}</a>
+      {{#if github_url}}
+      :: <a href="http://{{github_url}}" target="_blank" class="left">source</a>
+      {{/if}}
+      ::
+      <span class="comment_count">
+        {{comment_count}} comments
+        <span class="comments_expanded_arrow">
+          {{#if comments_expanded}}
+          ▼
+          {{else}}
+          ▶
+          {{/if}}
+        </span>
+      </span>
+    </div>
+    {{#if comments_expanded}}
+    {{> app_comments}}
+    {{/if}}
+  </div>
+</template>
+
+<template name="install_badge_instructions">
+  {{#if just_added_app}}
+  <div class="install_badge_instructions">
+    To add an official "Made with Meteor" badge to your app, just run:<br><strong><code style="font-size: 120%">meteor add madewith</code></strong>.
+  </div>
+  {{/if}}
+</template>
+
+<template name="app_comments">
+  {{#each comments}}
+  <div class="comment">
+    <div class="comment_author">{{comment_author}}</div>
+    <div class="comment_text">{{{comment_html}}}</div>
+  </div>
+  {{/each}}
+  <div class="new_comment">
+    <input id="new_comment_author" placeholder="your name"/>
+    <textarea id="new_comment_comment"></textarea>
+    <button class="new_comment_submit">add comment</button>
+  </div>
+</template>
+
+<template name="action_bar">
+  <div class="action_bar">
+    <span id="sort_toggle_popular"
+          class='sort_toggle sort_toggle_left {{additional_class "popular"}}'>Popular</span><span id="sort_toggle_recent"
+          class='sort_toggle sort_toggle_right {{additional_class "recent"}}'>Recent</span>
+  </div>
+</template>
