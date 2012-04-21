@@ -69,7 +69,7 @@
 </template>
 
 <template name="app">
-  <div class="app {{app_additional_class}}" id="app_{{normalized_name}}">
+  <div class="app {{app_additional_class}}" id="app_{{name_css_id}}">
     {{> install_badge_instructions}}
     <div class="app_description">
       <span>{{description}}</span>
@@ -78,7 +78,7 @@
       <span class="upvote">▲</span>
       <span class="vote_count">{{vote_count}} votes</span>
       ::
-      <a href="http://{{app_domain}}" target="_blank" class="right">{{app_domain}}</a>
+      <a href="http://{{name}}" target="_blank" class="right">{{app_domain}}</a>
       {{#if github_url}}
       :: <a href="http://{{github_url}}" target="_blank" class="left">source</a>
       {{/if}}

@@ -29,7 +29,7 @@ Template.draft_app.events = {
     Session.set('draft', false);
   },
   'click .draft_app_submit': function() {
-    var name = Madewith.shortAppName(Madewith.removeUrlProtocol($('#draft_name').val()));
+    var name = Madewith.normalizeAppName($('#draft_name').val());
     var salt = Meteor.uuid();
     var password = $('#draft_password').val();
 
@@ -93,6 +93,10 @@ Template.app.events = {
   }
 };
 
+Template.app.name_css_id = function () {
+  return this.name.replace(/\./g, '_');
+};
+
 Template.app.app_additional_class = function() {
   if (Session.equals('selected_app_name', this.name))
     return 'app_selected';
@@ -102,17 +106,6 @@ Template.app.app_additional_class = function() {
 
 Template.app.comments_expanded = function() {
   return Session.equals('selected_app_name', this.name);
-};
-
-Template.app.normalized_name = function() {
-  return Madewith.normalizedAppName(this.name);
-};
-
-Template.app.app_domain = function() {
-  if (this.name.indexOf('.') === -1)
-    return this.name + '.meteor.com';
-  else
-    return this.name;
 };
 
 Template.app_comments.events = {

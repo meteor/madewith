@@ -1,6 +1,10 @@
 Meteor.methods({
   createApp: function(app) {
+    // normalize on FQDN
+    var name = Madewith.normalizeAppName(app.name);
+
     _.extend(app, {
+      name: name,
       when: (new Date()).getTime(),
       comment_count: 0, // denormalized count of comments
       vote_count: 0, // denormalized count of all votes
@@ -9,10 +13,6 @@ Meteor.methods({
 
     var id = Apps.insert(app);
     return id;
-  },
-
-  removeApp: function (app_id, pw_sha) {
-    Apps.remove({_id: app_id, pw_sha: pw_sha});
   },
 
   vote: function(hostname) {
