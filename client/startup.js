@@ -2,6 +2,8 @@
 // - List of all apps
 // - Comments for selected app
 Meteor.startup(function () {
+  Session.set('order', 'popular');
+
   Meteor.subscribe("allApps", function() {
     // After we get back the list of apps, we can try to find the appropriate div
     // to scroll to.

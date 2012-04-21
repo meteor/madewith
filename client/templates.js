@@ -129,10 +129,10 @@ Template.app_comments.comment_author = function() {
 
 Template.action_bar.events = {
   'click #sort_toggle_popular': function() {
-    Router.setOrder('popular');
+    Session.set('order', 'popular');
   },
   'click #sort_toggle_recent': function() {
-    Router.setOrder('recent');
+    Session.set('order', 'recent');
   }
 };
 
