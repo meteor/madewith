@@ -20,6 +20,11 @@ Template.add_or_draft_app.draft = function() {
 };
 
 Template.draft_app.events = {
+  'keyup #draft_description, keyup #draft_name': function() {
+    $('.draft_app_submit').attr('disabled',
+                                $('#draft_description').val() === '' ||
+                                $('#draft_name').val() === '');
+  },
   'click .draft_app_cancel': function() {
     Session.set('draft', false);
   },
@@ -108,6 +113,13 @@ Template.app.app_domain = function() {
     return this.name + '.meteor.com';
   else
     return this.name;
+};
+
+Template.app_comments.events = {
+  'keyup #new_comment_comment': function() {
+    $('.new_comment_submit').attr('disabled',
+                                  $('#new_comment_comment').val().length < 3);
+  }
 };
 
 Template.app_comments.comments = function() {
