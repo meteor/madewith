@@ -1,3 +1,8 @@
+# Made With
+
+[Made With](http://madewith.meteor.com), a simple app gallery, is a sample Meteor app which
+showcases simple yet effective security and communication between any website and Meteor apps. 
+
 ## Interesting bits of code
 
 ### Disabling default mutator methods (from [server/startup.js](https://github.com/meteor/madewith/blob/master/server/startup.js))
