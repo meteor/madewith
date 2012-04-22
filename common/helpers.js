@@ -8,7 +8,7 @@ Madewith.commentsForApp = function(app) {
 
 // canonicalize a URL or bare hostname into a FQDN
 Madewith.normalizeAppName = function (name) {
-  var match = name.match('(.*://)?([a-zA-Z0-9\._]+)/?.*$');
+  var match = name.match('(.*://)?([a-zA-Z0-9\._\-]+)/?.*$');
   var host = match && match[2];
 
   if (!host)
