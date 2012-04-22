@@ -6,7 +6,7 @@ Madewith.animateToSelectedApp = function() {
   // Need to flush first since positions may have changed or new elements added
   Meteor.flush();
 
-  var app_name = Session.get('selected_app_name');
+  var app_name = MadewithSession.getSelectedNormalizedAppName();
   if (app_name) {
     var app_div = $('#app_' + app_name.replace(/\./g, '_'));
     if (app_div.length > 0) {

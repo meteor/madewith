@@ -1,8 +1,8 @@
 Template.app_list.apps = function() {
-  var order = Session.get('order');
+  var order = MadewithSession.getOrder();
   switch (order) {
   case 'popular':
-  case undefined:
+  case undefined: // XXX not quite sure when this happens, but it did.
     return Apps.find({}, {sort: {vote_count: -1, name: 1}});
     break;
 
@@ -16,7 +16,7 @@ Template.app_list.apps = function() {
 };
 
 Template.add_or_draft_app.draft = function() {
-  return Session.get('draft');
+  return MadewithSession.get('draft');
 };
 
 Template.draft_app.events = {
@@ -26,7 +26,7 @@ Template.draft_app.events = {
                                 $('#draft_name').val() === '');
   },
   'click .draft_app_cancel': function() {
-    Session.set('draft', false);
+    MadewithSession.set('draft', false);
   },
   'click .draft_app_submit': function() {
     var name = Madewith.normalizeAppName($('#draft_name').val());
@@ -45,8 +45,8 @@ Template.draft_app.events = {
       if (!err) {
         Router.setSelectedAppName(name);
         Madewith.animateToSelectedApp();
-        Session.set('draft', false);
-        Session.set('last_added_app_name', name);
+        MadewithSession.set('draft', false);
+        MadewithSession.set('lastAddedAppName', name);
       }
     });
   }
@@ -54,7 +54,7 @@ Template.draft_app.events = {
 
 Template.app_list.events = {
   'click .add_app': function() {
-    Session.set('draft', true);
+    MadewithSession.set('draft', true);
   }
 };
 
@@ -84,9 +84,8 @@ Template.app.events = {
   'click': function() {
     Router.setSelectedAppName(this.name);
   },
-  'click .app_description, click .comments_expanded_arrow':
-  function(event) {
-    if (Session.get('selected_app_name') === this.name) {
+  'click .app_description, click .comments_expanded_arrow': function(event) {
+    if (MadewithSession.getSelectedNormalizedAppName() === this.name) {
       Router.setSelectedAppName(null);
       event.stopPropagation();
     }
@@ -98,14 +97,14 @@ Template.app.name_css_id = function () {
 };
 
 Template.app.app_additional_class = function() {
-  if (Session.equals('selected_app_name', this.name))
+  if (MadewithSession.equals('selectedAppName', this.name))
     return 'app_selected';
   else
     return '';
 };
 
 Template.app.comments_expanded = function() {
-  return Session.equals('selected_app_name', this.name);
+  return MadewithSession.equals('selectedAppName', this.name);
 };
 
 Template.app_comments.events = {
@@ -129,18 +128,18 @@ Template.app_comments.comment_author = function() {
 
 Template.action_bar.events = {
   'click #sort_toggle_popular': function() {
-    Session.set('order', 'popular');
+    MadewithSession.setOrder('popular');
   },
   'click #sort_toggle_recent': function() {
-    Session.set('order', 'recent');
+    MadewithSession.setOrder('recent');
   }
 };
 
 Template.action_bar.additional_class = function(order) {
-  return Session.get('order') === order ? 'sort_toggle_selected' : '';
+  return MadewithSession.equals('order', order) ? 'sort_toggle_selected' : '';
 };
 
 Template.install_badge_instructions.just_added_app = function() {
-  return Session.get('last_added_app_name') === this.name;
+  return MadewithSession.equals('lastAddedAppName', this.name);
 };
 
