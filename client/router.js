@@ -19,7 +19,10 @@ MadewithRouter = Backbone.Router.extend({
     ":selectedAppName": "default"
   },
   default: function(selectedAppName) {
-    if (Madewith.displayAppName(selectedAppName) !== selectedAppName)
+    if (!selectedAppName)
+      MadewithSession.setSelectedAppName(null);
+    else if (Madewith.displayAppName(selectedAppName) !== selectedAppName)
+      // Make sure we are using the proper canonical url
       this.setSelectedAppName(selectedAppName);
     else
       MadewithSession.setSelectedAppName(selectedAppName);
