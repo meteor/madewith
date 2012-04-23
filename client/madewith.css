@@ -34,6 +34,15 @@ body {
   position: relative;
 }
 
+.header_meteor_link {
+  color: white;
+  text-decoration: none;
+}
+
+.header_meteor_link:hover {
+  color: #ff0;
+}
+
 .app_list {
   width: 100%;
   padding-right: 10px;
