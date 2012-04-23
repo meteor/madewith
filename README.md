@@ -1,8 +1,6 @@
 # Made With
 
-[Made With](http://madewith.meteor.com), a simple app gallery, is a sample Meteor app which
-showcases simple yet effective security and communication between any website and Meteor apps. It works together with
-the `madewith` package that adds a badge to your app. Try it by running `meteor add madewith`.
+...
 
 ## Interesting bits of code
 
