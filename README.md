@@ -1,7 +1,5 @@
 # Made With
 
-...
-
 ## Interesting bits of code
 
 ### Disabling default mutator methods (from [server/startup.js](https://github.com/meteor/madewith/blob/master/server/startup.js))
