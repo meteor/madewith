@@ -1,4 +1,4 @@
-# Made With
+# MadeWith: A gallery of Meteor apps
 
 ## Interesting bits of code
 
