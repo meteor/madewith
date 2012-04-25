@@ -10,6 +10,11 @@
  * http://madewith.meteor.com/foobar
  *   Load with the app registered on foobar.meteor.com selected
  *
+ * http://madewith.meteor.com/foo.to.meteor.com (notably *not*
+ *     http://madewith.meteor.com/foo.to, since that would refer to a site
+ *     deployed at http://foo.to)
+ *   Load with the app registered on foo.to.meteor.com selected
+ *
  * http://madewith.meteor.com/foobar.meteor.com
  *   Redirect to http://madewith.meteor.com/foobar, which selects foobar.meteor.com
  */

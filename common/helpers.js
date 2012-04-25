@@ -28,6 +28,10 @@ Madewith.removeUrlProtocol = function(url) {
     return url;
 };
 
+// Returns the name to be used in the URL for this app (see client/router.js)
+//
+// This code is duplicated in the madewith smartpackage (see #DisplayAppName)
+// XXX - Can this code somehow be shared reasonably?
 Madewith.displayAppName = function (name) {
   var parts = name.split('.');
   if (parts.length === 3 && parts[1] === 'meteor' && parts[2] === 'com')
