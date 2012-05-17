@@ -81,7 +81,7 @@ Template.app.events = {
     Router.setSelectedAppName(this.name);
     event.stopPropagation();
   },
-  'click': function() {
+  'click .app': function() {
     Router.setSelectedAppName(this.name);
   },
   'click .app_description, click .comments_expanded_arrow': function(event) {
