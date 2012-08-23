@@ -2,7 +2,7 @@
 // - List of all apps
 // - Comments for selected app
 Meteor.startup(function () {
-  MadewithSession.setOrder('popular');
+  MadewithSession.setOrder('recent');
 
   Meteor.subscribe("allApps", function() {
     // After we get back the list of apps, we can try to find the appropriate div
