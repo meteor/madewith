@@ -19,7 +19,7 @@ Template.add_or_draft_app.draft = function() {
   return MadewithSession.get('draft');
 };
 
-Template.draft_app.events = {
+Template.draft_app.events({
   'keyup #draft_description, keyup #draft_name': function() {
     $('.draft_app_submit').attr('disabled',
                                 $('#draft_description').val() === '' ||
@@ -50,15 +50,15 @@ Template.draft_app.events = {
       }
     });
   }
-};
+});
 
-Template.app_list.events = {
+Template.app_list.events({
   'click .add_app': function() {
     MadewithSession.set('draft', true);
   }
-};
+});
 
-Template.app.events = {
+Template.app.events({
   'click .new_comment': function(event) {
     event.stopPropagation(); // so that we don't collapse the app
   },
@@ -90,7 +90,7 @@ Template.app.events = {
       event.stopPropagation();
     }
   }
-};
+});
 
 Template.app.name_css_id = function () {
   return this.name.replace(/\./g, '_');
@@ -107,12 +107,12 @@ Template.app.comments_expanded = function() {
   return MadewithSession.equals('selectedAppName', this.name);
 };
 
-Template.app_comments.events = {
+Template.app_comments.events({
   'keyup #new_comment_comment': function() {
     $('.new_comment_submit').attr('disabled',
                                   $('#new_comment_comment').val().length < 3);
   }
-};
+});
 
 Template.app_comments.comments = function() {
   return Madewith.commentsForApp(this);
@@ -126,14 +126,14 @@ Template.app_comments.comment_author = function() {
   return this.author || 'Anonymous';
 };
 
-Template.action_bar.events = {
+Template.action_bar.events({
   'click #sort_toggle_popular': function() {
     MadewithSession.setOrder('popular');
   },
   'click #sort_toggle_recent': function() {
     MadewithSession.setOrder('recent');
   }
-};
+});
 
 Template.action_bar.additional_class = function(order) {
   return MadewithSession.equals('order', order) ? 'sort_toggle_selected' : '';

@@ -22,7 +22,7 @@ Meteor.methods({
     // minutes since epoch
     var vote_ts = Math.floor((new Date()).getTime() / 1000 / 60);
 
-    if (Meteor.is_client) {
+    if (Meteor.isClient) {
       Apps.update({name: hostname},
                   {$inc: {vote_count: 1}, $addToSet: {votes: vote_ts}});
     } else {

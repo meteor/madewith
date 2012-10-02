@@ -27,7 +27,7 @@ Meteor.methods({
     // minutes since epoch
     var vote_ts = Math.floor((new Date()).getTime() / 1000 / 60);
 
-    if (Meteor.is_client) {
+    if (Meteor.isClient) {
       Apps.update({name: hostname},
                   {$inc: {vote_count: 1}, $addToSet: {votes: vote_ts}});
     } else {
@@ -43,7 +43,7 @@ Meteor.methods({
 ### Restricting the fields sent down to the client (from [common/data_model.js](https://github.com/meteor/madewith/blob/avital/common/data_model.js))
 
 ```javascript
-if (Meteor.is_server) {
+if (Meteor.isServer) {
   Meteor.publish("allApps", function() {
     return Apps.find({}, {fields: {pw_sha: 0, votes: 0}});
   });
@@ -55,7 +55,7 @@ if (Meteor.is_server) {
 ### Calling Meteor methods from outside the app (from the [madewith badge smartpackage](https://github.com/meteor/meteor/blob/master/packages/madewith/madewith.js))
 
 ```javascript
-Template.madewith.events = {
+Template.madewith.events({
   'click .madewith_upvote': function(event) {
     var app = apps.findOne();
     if (app) {
@@ -63,5 +63,5 @@ Template.madewith.events = {
       // ...
     }
   }
-}
+});
 ```

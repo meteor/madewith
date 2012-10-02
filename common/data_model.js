@@ -1,7 +1,7 @@
 Apps = new Meteor.Collection("madewith_apps");
 Comments = new Meteor.Collection("madewith_comments");
 
-if (Meteor.is_server) {
+if (Meteor.isServer) {
   Meteor.publish("allApps", function() {
     return Apps.find({}, {fields: {pw_sha: 0, votes: 0}});
   });
