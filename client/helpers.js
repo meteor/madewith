@@ -4,7 +4,7 @@ if (typeof Madewith === 'undefined')
 
 Madewith.animateToSelectedApp = function() {
   // Need to flush first since positions may have changed or new elements added
-  Meteor.flush();
+  Deps.flush();
 
   var app_name = MadewithSession.getSelectedNormalizedAppName();
   if (app_name) {
