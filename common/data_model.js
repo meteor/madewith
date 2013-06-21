@@ -7,11 +7,13 @@ if (Meteor.isServer) {
   });
 
   Meteor.publish("myApp", function(app_name) {
+    check(app_name, String);
     return Apps.find({name: app_name},
                      {fields: {pw_sha: 0, votes: 0}});
   });
 
   Meteor.publish("comments", function (app_id) {
+    check(app_id, String);
     return Comments.find({app_id: app_id});
   });
 }

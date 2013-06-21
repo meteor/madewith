@@ -1,5 +1,13 @@
 Meteor.methods({
   createApp: function(app) {
+    check(app, {
+      name: String,
+      description: String,
+      github_url: String,
+      pw_salt: String,
+      pw_sha: String
+    });
+
     // normalize on FQDN
     var name = Madewith.normalizeAppName(app.name);
 
@@ -16,6 +24,8 @@ Meteor.methods({
   },
 
   vote: function(hostname) {
+    check(hostname, String);
+
     // if the app doesn't already have a vote in this minute,
     // increment vote_count and mark this minute in the votes array.
 
@@ -32,6 +42,10 @@ Meteor.methods({
   },
 
   comment: function (app_id, author, comment) {
+    check(app_id, String);
+    check(author, String);
+    check(comment, String);
+
     Comments.insert({app_id: app_id, author: author, comment: comment});
     Apps.update({_id: app_id}, {$inc: {comment_count: 1}});
   }
