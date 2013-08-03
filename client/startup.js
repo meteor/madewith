@@ -11,7 +11,7 @@ Meteor.startup(function () {
   });
 
   // Subscribe to comments on the selected app, if one is selected
-  Meteor.autosubscribe(function () {
+  Deps.autorun(function () {
     var app_name = MadewithSession.getSelectedNormalizedAppName();
 
     if (app_name) {
